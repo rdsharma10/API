@@ -45,7 +45,9 @@ app.patch('/products/:id', (req, res) => {
   Object.assign(product, req.body, { id });
   res.json(product);
 });
+ 
 
+ 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
