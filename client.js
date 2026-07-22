@@ -41,11 +41,3 @@ async function patchProduct(id, partialData) {
   if (!res.ok) throw new Error(`Failed: ${res.status}`);
   return res.json();
 }
-
-(async () => {
-  console.log(await getProducts());
-  console.log(await getProduct(1));
-  console.log(await createProduct({ name: 'Headphones', price: 150 }));
-  console.log(await updateProduct(2, { name: 'iPhone', price: 700 }));
-  console.log(await patchProduct(3, { price: 250 }));
-})();
