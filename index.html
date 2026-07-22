@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Products</title>
+</head>
+<body>
+
+<h1>Products</h1>
+
+<button onclick="loadProducts()">Load Products</button>
+<ul id="list"></ul>
+
+<h2>Add Product</h2>
+<input id="name" placeholder="Name">
+<input id="price" placeholder="Price" type="number">
+<button onclick="addProduct()">Add</button>
+
+<script src="./client.js"></script>
+<script>
+  async function loadProducts() {
+    const products = await getProducts();
+    const list = document.getElementById('list');
+    list.innerHTML = '';
+    products.forEach(p => {
+      const li = document.createElement('li');
+      li.textContent = `${p.id} - ${p.name} - $${p.price}`;
+      list.appendChild(li);
+    });
+  }
+
+  async function addProduct() {
+    const name = document.getElementById('name').value;
+    const price = Number(document.getElementById('price').value);
+    await createProduct({ name, price });
+    loadProducts();
+  }
+</script>
+
+</body>
+</html>
