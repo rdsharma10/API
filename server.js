@@ -13,6 +13,10 @@ let products = [
 app.get('/products', (req, res) => {
   res.json(products);
 });
+app.use(cors({
+    origin:"http://127.0.0.1:5500",
+    methods:["GET","POST","PUT"]
+}))
 
 app.get('/products/:id', (req, res) => {
   const product = products.find(p => p.id === Number(req.params.id));
@@ -26,6 +30,7 @@ app.post('/products', (req, res) => {
   products.push(newProduct);
   res.status(201).json(newProduct);
 });
+
 
 
 app.put('/products/:id', (req, res) => {
