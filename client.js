@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3000/products';
+console.log(fetch(BASE_URL));//fetch Accept promise;
 
 async function getProducts() {
   const res = await fetch(BASE_URL);
