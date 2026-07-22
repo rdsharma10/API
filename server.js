@@ -1,8 +1,12 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-
+const cors=require('cors');
 app.use(express.json());
+app.use(cors({
+    origin:"http://127.0.0.1:5500",
+    methods:["GET","POST","PUT"]
+}))
 
 let products = [
   { id: 1, name: 'Laptop', price: 1000 },
@@ -13,10 +17,6 @@ let products = [
 app.get('/products', (req, res) => {
   res.json(products);
 });
-app.use(cors({
-    origin:"http://127.0.0.1:5500",
-    methods:["GET","POST","PUT"]
-}))
 
 app.get('/products/:id', (req, res) => {
   const product = products.find(p => p.id === Number(req.params.id));
