@@ -27,6 +27,7 @@ app.post('/products', (req, res) => {
   res.status(201).json(newProduct);
 });
 
+
 app.put('/products/:id', (req, res) => {
   const id = Number(req.params.id);
   const index = products.findIndex(p => p.id === id);
