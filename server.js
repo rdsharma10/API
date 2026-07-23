@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 const cors=require('cors');
+
+
 app.use(express.json());
 app.use(cors({
     origin:"http://127.0.0.1:5500",
@@ -51,8 +53,6 @@ app.patch('/products/:id', (req, res) => {
   Object.assign(product, req.body, { id });
   res.json(product);
 });
- 
-
  
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
