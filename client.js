@@ -7,6 +7,7 @@ async function getProducts() {
   return res.json();
 }
 
+console.log('DevOrg');
 async function getProduct(id) {
   const res = await fetch(`${BASE_URL}/${id}`);
   if (!res.ok) throw new Error(`Failed: ${res.status}`);
