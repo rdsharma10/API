@@ -1,4 +1,5 @@
 const BASE_URL = 'http://localhost:3000/products';
+console.log(fetch(BASE_URL));//fetch Accept promise;
 
 async function getProducts() {
   const res = await fetch(BASE_URL);
@@ -6,6 +7,7 @@ async function getProducts() {
   return res.json();
 }
 
+console.log('DevOrg');
 async function getProduct(id) {
   const res = await fetch(`${BASE_URL}/${id}`);
   if (!res.ok) throw new Error(`Failed: ${res.status}`);
