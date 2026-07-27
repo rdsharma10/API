@@ -29,8 +29,9 @@ app.post('/products', (req, res) => {
   newProduct.id = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
   products.push(newProduct);
   res.status(201).json(newProduct);
+  
 });
-
+console.log('DevOrg');
 
 
 app.put('/products/:id', (req, res) => {
