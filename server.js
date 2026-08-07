@@ -14,6 +14,8 @@ let products = [
   { id: 3, name: 'Tablet', price: 300 }
 ];
 
+
+console.log('products'+products);
 app.get('/products', (req, res) => {
   res.json(products);
 });
