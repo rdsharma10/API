@@ -22,7 +22,11 @@ app.get('/products', (req, res) => {
 console.log('Adding notes');
 
 app.get('/products/:id', (req, res) => {
+<<<<<<< HEAD
+  const product = products.find(x=> x.id === Number(req.params.id));
+=======
   const product = products.find(x => x.id === Number(req.params.id));
+>>>>>>> origin
   if (!product) return res.status(404).json({ error: 'Product not found' });
   res.json(product);
 });
