@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
-
-
+const cors=require('cors');
 app.use(express.json());
+app.use(cors({
+    origin:"http://127.0.0.1:5500",
+    methods:["GET"]
+}))
 
 let products = [
   { id: 1, name: 'Laptop', price: 1000 },
@@ -11,12 +14,19 @@ let products = [
   { id: 3, name: 'Tablet', price: 300 }
 ];
 
+
+console.log('products'+products);
 app.get('/products', (req, res) => {
   res.json(products);
 });
+console.log('Adding notes');
 
 app.get('/products/:id', (req, res) => {
+<<<<<<< HEAD
   const product = products.find(x=> x.id === Number(req.params.id));
+=======
+  const product = products.find(x => x.id === Number(req.params.id));
+>>>>>>> origin
   if (!product) return res.status(404).json({ error: 'Product not found' });
   res.json(product);
 });
@@ -26,7 +36,10 @@ app.post('/products', (req, res) => {
   newProduct.id = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
   products.push(newProduct);
   res.status(201).json(newProduct);
+  
 });
+console.log('DevOrg');
+
 
 app.put('/products/:id', (req, res) => {
   const id = Number(req.params.id);
@@ -46,6 +59,9 @@ app.patch('/products/:id', (req, res) => {
   Object.assign(product, req.body, { id });
   res.json(product);
 });
+ 
+
+
  
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
