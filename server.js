@@ -5,8 +5,8 @@ const cors=require('cors');
 app.use(express.json());
 app.use(cors({
     origin:"http://127.0.0.1:5500",
-    methods:["GET"]
-}))
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+  }))
 
 let products = [
   { id: 1, name: 'Laptop', price: 1000 },
@@ -55,9 +55,17 @@ app.patch('/products/:id', (req, res) => {
   Object.assign(product, req.body, { id });
   res.json(product);
 });
- 
 
- 
+app.delete('/products/:id',(req, res)=>{
+  const id = Number(req.params.id);
+  const index = products.findIndex(p => p.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: "Product not found" });
+  }
+  const [deletedProduct] = products.splice(index, 1);
+  res.json(deletedProduct);
+})
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
