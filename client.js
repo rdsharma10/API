@@ -23,7 +23,10 @@ async function createProduct(product) {
   if (!res.ok) throw new Error(`Failed: ${res.status}`);
   return res.json();
 }
-
+function removeall()
+{
+  
+}
 async function updateProduct(id, product) {
   const res = await fetch(`${BASE_URL}/${id}`, {
     method: 'PUT',
